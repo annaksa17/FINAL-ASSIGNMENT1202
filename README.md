@@ -32,3 +32,9 @@ Viewing the combined table
 SELECT * FROM combined_table1;
 ```
 
+Displaying the average units sold for each product color 
+```sql
+SELECT product_color, AVG(units_sold) AS average_units_sold
+FROM combined_table1
+GROUP BY product_color;
+```

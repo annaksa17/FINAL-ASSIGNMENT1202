@@ -14,4 +14,21 @@ RENAME COLUMN ï»¿product_id TO product_id;
 RENAME COLUMN ï»¿product_id TO product_id;
 ```
 
+Displaying the altered columns
+```sql
+select product_id from summer_product.product_list;
+select product_id from summer_product.dimension;
+```
+
+Creating a view that joins the columns from both the fact and dimensions tables with 'product_id' column as primary key
+```sql
+CREATE VIEW combined_table1 AS
+SELECT fact.product_id, fact.price, fact.units_sold,dimension.countries_shipped_to, dimension.product_color
+FROM summer_product.product_list fact
+INNER JOIN summer_product.dimension dimension ON fact.product_id = dimension.product_id;
+```
+Viewing the combined table
+```sql
+SELECT * FROM combined_table1;
+```
 
